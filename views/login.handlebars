@@ -6,7 +6,7 @@
 
     <div id="id01" class="modal">
 {{!-- action and method are ready to go. may need to reroute files --}}
-      <form class="modal-content animate" action="/login/add" method="post">
+      <form class="modal-content animate login-form signup-form" action="/" method="post">
         <div class="imgcontainer">
           <span onclick="document.getElementById('id01').style.display='none'" class="close"
             title="Close Modal">&times;</span>
@@ -15,11 +15,11 @@
         </div>
 
         <div class="container" id="form-font-properties">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" >
+          <label for="user_name"><b>Username</b></label>
+          <input id="user_name" type="text" placeholder="Enter Username" name="user_name" >
 
           <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" >
+          <input id="password" type="password" placeholder="Enter Password" name="psw" >
 
           <button type="submit">Enter Realm</button>
           <label>
