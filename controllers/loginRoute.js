@@ -4,16 +4,27 @@ const bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
+  try {
+    if (req.session.loggedIn) {
+      res.redirect('/campaign');
+      return;
+    }else{
+      res.render('login');
+    }
   }
-  res.render('login');
+  catch (error) {
+    if (error) throw error;
+  }
 });
 
 router.get('/', async (req, res) => {
   try {
-    res.render('login');
+    if (req.session.loggedIn) {
+      res.redirect('/campaign');
+      return;
+    }else{
+      res.render('login');
+    }
   }
   catch (error) {
     if (error) throw error;
@@ -23,21 +34,47 @@ router.get('/', async (req, res) => {
 
 router.get('/campaign', async (req, res) => {
   try {
-    res.render('campaign');
+    if (req.session.loggedIn) {
+      res.redirect('/campaign');
+      return;
+    }else{
+      res.render('login');
+    }
   }
   catch (error) {
     if (error) throw error;
   }
-  
 });
 
 router.get('/character', (req, res) => {
+  try {
     if (req.session.loggedIn) {
-      res.redirect('/');
+      res.redirect('/character');
       return;
     }
     res.render('login');
+  }
+  catch (error) {
+    if (error) throw error;
+  }
 });
+
+router.get('/group', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/group');
+    return;
+  }
+  res.render('login');
+});
+
+router.get('/create-character', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/create-character');
+    return;
+  }
+  res.render('login');
+});
+
 
 
 

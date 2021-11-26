@@ -17,8 +17,7 @@ router.post('/users', async (req, res) => {
   
         req.session.save(() => {
             req.session.loggedIn = true;
-            res.status(200).json(dbUserData)
-            .render('campaign');
+            res.status(200).json(dbUserData).render('campaign');
         });
         res.json(dbUserData)
     } 
