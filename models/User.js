@@ -11,14 +11,14 @@ User.init({
     primaryKey: true,
     autoIncrement: true,
   },
-  user_name: {
-    type: DataTypes.STRING(30),
-    allowNull: false,
-  },
   password: {
     type: DataTypes.STRING,
     // ADD BCRYPT STUFF HERE OR FIGURE OUT PASSPORT
   },
+  user_name: {
+    type: DataTypes.STRING,
+    allowNull:false
+  }
   // is_dm: {
   //   type: DataTypes.BOOLEAN,
   //   allowNull: false,

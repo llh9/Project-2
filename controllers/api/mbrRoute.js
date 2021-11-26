@@ -11,14 +11,16 @@ router.post('/users', async (req, res) => {
     try {
 
         const dbUserData = await User.create({
-            user_name: req.body.username,
+            user_name: req.body.user_name,
             password: req.body.password,
         });
   
         req.session.save(() => {
             req.session.loggedIn = true;
-            res.status(200).json(dbUserData).render('character');
+            res.status(200).json(dbUserData)
+            .render('campaign');
         });
+        res.json(dbUserData)
     } 
     catch (err) {
 
